@@ -1,0 +1,1 @@
+<td><input type='checkbox' name='foo'  class='print-label-id' value='{{$record->id}}'></td>

@@ -1,0 +1,347 @@
+/*Helper Classes*/
+.float-none{
+    float: none !important;
+}
+.white-space-normal{
+    white-space: normal !important;
+}
+
+
+/* Dashboard Logo css */
+.nav_title {
+    height: auto;
+}
+.site_title {
+    height: auto;
+    display: block;
+}
+.site_title {
+    height: auto;
+    display: block;
+    padding: 0px;
+}
+.site_title img
+{
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+.dashboard-logo-icon
+{
+    display: none !important;
+}
+
+.nav-sm .site_title .dashboard-logo-icon
+{
+    display: block !important;
+    padding-top: 10px;
+    width: 70%;
+    margin: 0 auto;
+}
+.nav-sm .site_title .dashboard-logo-text
+{
+    display: none;
+}
+.main_menu_side {
+    padding: 0;
+    padding-top: 35px;
+}
+.tile_count {color: #000;
+}
+
+/*.montreal-dashbord-tiles css open*/
+.montreal-dashbord-tiles .tile-stats {
+    border: 1px solid #c6dd38;
+    background: #c6dd38;
+
+    /*width: 348px;*/
+}
+.montreal-dashbord-tiles .count {
+    color: #fff;
+}
+.montreal-dashbord-tiles .icon {
+    color: #4689ff;
+}
+.montreal-dashbord-tiles h3 {
+    color: #fff;
+}
+/*.montreal-dashbord-tiles css open*/
+
+/*loader css open*/
+.loader-mian-wrap {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    z-index: 999999999;
+    background-color: #000000bf;
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    margin: 0px 0px;
+    text-align: center;
+    display: none;
+}
+.loader-mian-wrap.show
+{
+    display: block !important;
+}
+.loader-inner-wrap {
+    position: relative;
+    top: 45%;
+}
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+
+}
+.lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+}
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+}
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+}
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+}
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+}
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+}
+
+
+/*progress bar css open*/
+.progress-main-wrap {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    z-index: 999999999;
+    background-color: #0000006e;
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    margin: 0px 0px;
+    text-align: center;
+    display: none;
+    padding: 0px 10%;
+}
+
+.progress-main-wrap.show
+{
+    display: block !important;
+}
+
+.progress-main-wrap .progress {
+    position: relative;
+    top: 45%;
+    border-radius: 5px !important;
+}
+.progress-main-wrap .progress-label
+{
+    position: fixed;
+    margin-top: -25px;
+    color: #fff;
+}
+.progress-main-wrap .error-report
+{
+    display: none;
+    position: fixed;
+    margin-top: -50px;
+    color: #ff4040 !important;
+    font-weight: 700;
+}
+/*progress bar css close*/
+
+
+/*dashboard cards count loader*/
+
+.dashbords-conts-tiles-main-wrap {
+    position: relative;
+
+}
+.dashbords-conts-tiles-loader-main-wrap {
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    z-index: 999999998;
+    top: 0px;
+    left: 0px;
+    display: none;
+    padding: 0px 10px 12px 10px;
+
+}
+.dashbords-conts-tiles-loader-inner-wrap {
+    position: relative;
+    top: 0%;
+    height: 100%;
+    background-color: #0000005e;
+    padding: 5px;
+}
+
+/*dashboard cards count loader*/
+
+@keyframes lds-roller {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*loader css close*/
+
+/*for small screens */
+@media only screen and (max-width: 1680px) {
+    .top_tiles .icon
+    {
+        font-size: 40px;
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        width: auto;
+        height: auto;
+        font-size: 40px;
+    }
+
+    .top_tiles .icon .fa
+    {   vertical-align: middle;
+        font-size: inherit;
+    }
+    .top_tiles .tile-stats {
+        padding-right: 70px;
+        padding-top: 6px;
+        padding-bottom: 12px;
+    }
+    .tile-stats .count {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 1.65857;
+        overflow: hidden;
+        box-sizing: border-box;
+        text-overflow: ellipsis;
+    }
+    .tile-stats h3
+    {
+        font-size: 12px;
+    }
+}
+
+.control-label-sm , .control-label-md
+{
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+
+/*for laptop screens */
+@media only screen and (max-width: 1280px) {
+    .top_tiles .tile-stats {
+        padding-right: 50px;
+        min-height: 79px;
+    }
+    .top_tiles .icon
+    {
+
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        width: auto;
+        height: auto;
+        font-size: 35px;
+    }
+	 .control-label-sm
+    {
+        text-align: left;
+    }
+}
+/*for mobile screens 768 break point */
+
+@media only screen and (max-width: 1280px) {
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9
+    {
+        width: 100%;
+    }
+
+    .control-label-left
+    {
+        text-align: left !important;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    div.dataTables_length, div.dataTables_filter, div.dataTables_info{
+        text-align: left !important;
+        float: none !important;
+        width: 100% !important;
+    }
+}

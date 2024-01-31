@@ -1,0 +1,211 @@
+<?php
+$statusId = array(
+    "136" => "Client requested to cancel the order",
+    "137" => "Delay in delivery due to weather or natural disaster",
+    "118" => "left at back door",
+    "117" => "left with concierge",
+    "135" => "Customer refused delivery",
+    "108" => "Customer unavailable-Incorrect address",
+    "106" => "Customer unavailable - delivery returned",
+    "107" => "Customer unavailable - Left voice mail - order returned",
+    "109" => "Customer unavailable - Incorrect phone number",
+    "142" => "Damaged at hub (before going OFD)",
+    "143" => "Damaged on road - undeliverable",
+    "144" => "Delivery to mailroom",
+    "103" => "Delay at pickup",
+    "139" => "Delivery left on front porch",
+    "138" => "Delivery left in the garage",
+    "114" => "Successful delivery at door",
+    "113" => "Successfully hand delivered",
+    "120" => "Delivery at Hub",
+    "110" => "Delivery to hub for re-delivery",
+    "111" => "Delivery to hub for return to merchant",
+    "121" => "Pickup from Hub",
+    "102" => "Joey Incident",
+    "104" => "Damaged on road - delivery will be attempted",
+    "105" => "Item damaged - returned to merchant",
+    "129" => "Joey at hub",
+    "128" => "Package on the way to hub",
+    "140" => "Delivery missorted, may cause delay",
+    "116" => "Successful delivery to neighbour",
+    "132" => "Office closed - safe dropped",
+    "101" => "Joey on the way to pickup",
+    "32" => "Order accepted by Joey",
+    "14" => "Merchant accepted",
+    "36" => "Cancelled by JoeyCo",
+    "124" => "At hub - processing",
+    "38" => "Draft",
+    "18" => "Delivery failed",
+    "56" => "Partially delivered",
+    "17" => "Delivery success",
+    "68" => "Joey is at dropoff location",
+    "67" => "Joey is at pickup location",
+    "13" => "At hub - processing",
+    "16" => "Joey failed to pickup order",
+    "57" => "Not all orders were picked up",
+    "15" => "Order is with Joey",
+    "112" => "To be re-attempted",
+    "131" => "Office closed - returned to hub",
+    "125" => "Pickup at store - confirmed",
+    "61" => "Scheduled order",
+    "37" => "Customer cancelled the order",
+    "34" => "Customer is editting the order",
+    "35" => "Merchant cancelled the order",
+    "42" => "Merchant completed the order",
+    "54" => "Merchant declined the order",
+    "33" => "Merchant is editting the order",
+    "29" => "Merchant is unavailable",
+    "24" => "Looking for a Joey",
+    "23" => "Waiting for merchant(s) to accept",
+    "28" => "Order is with Joey",
+    "133" => "Packages sorted",
+    "55" => "ONLINE PAYMENT EXPIRED",
+    "12" => "ONLINE PAYMENT FAILED",
+    "53" => "Waiting for customer to pay",
+    "141" => "Lost package",
+    "60" => "Task failure",
+    "145" => "Returned To Merchant",
+    "146" => "Delivery Missorted, Incorrect Address",
+    '153' => 'Miss sorted to be reattempt',
+    '154' => 'Joey unable to complete the route', '155' => 'To be re-attempted tomorrow'
+);
+$statuses = array(
+    "136" => "Client requested to cancel the order",
+    "135" => "Customer refused delivery",
+    "108" => "Customer unavailable-Incorrect address",
+    "106" => "Customer unavailable - delivery returned",
+    "107" => "Customer unavailable - Left voice mail - order returned",
+    "109" => "Customer unavailable - Incorrect phone number",
+    "142" => "Damaged at hub (before going OFD)",
+    "143" => "Damaged on road - undeliverable",
+    "110" => "Delivery to hub for re-delivery",
+    "111" => "Delivery to hub for return to merchant",
+    "102" => "Joey Incident",
+    "104" => "Damaged on road - delivery will be attempted",
+    "105" => "Item damaged - returned to merchant",
+    "101" => "Joey on the way to pickup",
+    "112" => "To be re-attempted",
+    "131" => "Office closed - returned to hub",
+    "145" => "Returned To Merchant",
+    "146" => "Delivery Missorted, Incorrect Address",
+    '153' => 'Miss sorted to be reattempt',
+    '154' => 'Joey unable to complete the route', '155' => 'To be re-attempted tomorrow'
+);
+?>
+
+@extends( 'backend.layouts.app' )
+
+@section('title', 'Micro Hub Scanning')
+
+@section('CSSLibraries')
+    <!-- DataTables CSS -->
+    <link href="{{ backend_asset('libraries/datatables-plugins/dataTables.bootstrap.css') }}" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="{{ backend_asset('libraries/datatables-responsive/dataTables.responsive.css') }}" rel="stylesheet">
+    <!-- Image Viewer CSS -->
+    <link href="{{ backend_asset('libraries/galleria/colorbox.css') }}" rel="stylesheet">
+    <!--joey-custom-css-->
+    <link href="{{ backend_asset('css/joeyco-custom.css') }}" rel="stylesheet">
+    <style>
+
+    </style>
+
+
+@endsection
+
+@section('JSLibraries')
+    <!-- DataTables JavaScript -->
+    <script src="{{ backend_asset('libraries/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ backend_asset('libraries/datatables-plugins/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ backend_asset('libraries/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ backend_asset('libraries/galleria/jquery.colorbox.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTK4viphUKcrJBSuoidDqRhVA4AWnHOo0&libraries=places" type="text/javascript"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ backend_asset('js/joeyco-custom-script.js')}}"></script>
+@endsection
+
+@section('inlineJS')
+    <script type="text/javascript">
+
+    </script>
+@endsection
+
+@section('content')
+    @include( 'backend.layouts.loader' )
+    <div id="map"></div>
+    <!--Open Main Div-->
+    <div class="right_col" role="main">
+
+        <!--Open Heading Div-->
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Micro Hub Scanning Detail
+                    <small></small>
+                </h3>
+            </div>
+        </div>
+        <!--Close Heading Div-->
+
+        <!--Open Row Div-->
+        <div class="row">
+            <!--Open Col Div-->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!--Open X_Panel Div-->
+                <div class="x_panel">
+                    <!--Open x_title Div-->
+                    <div class="x_title">
+                        <div class="clearfix"></div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                @include( 'backend.layouts.notification_message' )
+                    <!--table-top-form-from-open-->
+                    <!--Open X_Content Div Of Table-->
+                    <div class="x_content">
+                    @include( 'backend.layouts.errors' )
+                    <!--Open Table Responce Div-->
+                    <!-- <div class="table-responsive"> -->
+
+                    <!--Open Table Tracking Order List-->
+                        <table class="table table-striped table-bordered return-order-datatable" data-form="deleteForm">
+                            <thead>
+                            <tr>
+                                <th>Bundle Id</th>
+                                <th>Tracking ID</th>
+                                <th>Hub</th>
+                                <th>Own Hub</th>
+                                <th>Created At</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($hub_bundle as $BundleOrders)
+                                <tr>
+                                    <td>{{$BundleOrders->bundle_id}}</td>
+                                    <td>{{isset($BundleOrders->tracking_id) ? $BundleOrders->tracking_id : ''}}</td>
+                                    <td>{{isset($BundleOrders->hub->title) ? $BundleOrders->hub->title : ''}}</td>
+
+                                        @if($BundleOrders->is_my_hub == 0)
+                                        <td> No </td>
+                                        @else
+                                        <td> Yes </td>
+                                        @endif
+                                    <td>{{$BundleOrders->created_at}}</td>
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                        <!--Close Table Tracking Order List-->
+                        <!--Close Table Responce Div-->
+                </div>
+                    <!--Close X_Content Div Of Table-->
+
+                </div>
+                <!--Open X_Panel Div-->
+            </div>
+            <!--Close Col Div-->
+        </div>
+        <!--Close Row Div-->
+    </div>
+    <!--Close Main Div-->
+@endsection
