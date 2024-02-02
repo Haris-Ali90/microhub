@@ -88,12 +88,14 @@ class FirstMileRoutingController extends BackendController
             );
 
         }
+        dd($request->hub_id);
 
         $hubPick = Hub::where('id','=',$request->hub_id)->first();
         $zone = RoutingZones::where('hub_id','=',$request->hub_id)->first();
         $address = urlencode($hubPick->address);
         // google map geocode api url
-        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyDTK4viphUKcrJBSuoidDqRhVA4AWnHOo0";
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyBX0Z04xF9br04EGbVWR3xWkMOXVeKvns8";
+        dd($url);
 
         // get the json response
         $resp_json = file_get_contents($url);
