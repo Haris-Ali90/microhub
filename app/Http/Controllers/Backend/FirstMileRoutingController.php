@@ -62,15 +62,16 @@ class FirstMileRoutingController extends BackendController
         foreach($sprints as $sprint){
 
             $address = $sprint->vendor->business_address;
-            $latitude = $sprint->vendor->latitude/1000000;
-            $longitude = $sprint->vendor->longitude/1000000;
+            $latitude = $sprint->vendor->latitude;
+            $longitude = $sprint->vendor->longitude;
 
+//            dd($sprint->vendor->latitude);
             if($sprint->vendor->business_address == null){
                 $location = \App\Locations::find($sprint->vendor->location_id);
                 if($location){
                     $address = $location->address;
-                    $latitude = $location->latitude/1000000;
-                    $longitude = $location->longitude/1000000;
+                    $latitude = $location->latitude;
+                    $longitude = $location->longitude;
                 }else{
                     $locationEnc = \App\LocationEnc::find($sprint->vendor->location_id);
                     $address = $locationEnc->setDecryptAddressAttribute($locationEnc->address, $sprint->vendor->location_id);
@@ -88,20 +89,22 @@ class FirstMileRoutingController extends BackendController
             );
 
         }
-        dd($request->hub_id);
+//        dd($request->hub_id);
 
         $hubPick = Hub::where('id','=',$request->hub_id)->first();
         $zone = RoutingZones::where('hub_id','=',$request->hub_id)->first();
         $address = urlencode($hubPick->address);
         // google map geocode api url
         $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyBX0Z04xF9br04EGbVWR3xWkMOXVeKvns8";
-        dd($url);
 
         // get the json response
         $resp_json = file_get_contents($url);
 
         // decode the json
         $resp = json_decode($resp_json, true);
+
+//        dd($resp);
+
 
         // response status will be 'OK', if able to geocode given address
         if($resp['status']=='OK'){
@@ -169,9 +172,13 @@ class FirstMileRoutingController extends BackendController
             "options" => $options
         );
 
+//        dd($payload);
+
         $client = new Client( '/vrp' );
         $client->setData($payload);
         $apiResponse= $client->send();
+
+//        dd($apiResponse);
 
         if(!empty($apiResponse->error)){
             return response()->json( ['status'=> 400, "output"=> 'Something went wrong, please contact your administrator' ]);
